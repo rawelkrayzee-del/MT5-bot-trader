@@ -1,5 +1,5 @@
 """
-URL configuration for defang_sample project.
+URL configuration for forex trading bot project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -16,10 +16,37 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import RedirectView
+from django.conf import settings
+from django.conf.urls.static import static
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView,
+)
 
 urlpatterns = [
+    # Admin interface
     path('admin/', admin.site.urls),
-    path('todos/', include('example_app.urls', namespace='example_app')),
-    path('', RedirectView.as_view(url='/todos/')),
+    
+    # Original example app
+    path('', include('example_app.urls')),
+    
+    # Authentication endpoints
+    path('api/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    
+    # OAuth2 endpoints
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    
+    # Forex trading application
+    path('forex/', include('forex_trading.urls')),
+    
+    # Django REST Framework browsable API
+    path('api-auth/', include('rest_framework.urls')),
 ]
+
+# Serve media files in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

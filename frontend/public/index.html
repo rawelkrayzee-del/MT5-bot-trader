@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Professional Forex Trading Bot Platform - Automated trading with advanced algorithms and real-time market analysis" />
+    <meta name="keywords" content="forex, trading, bot, automated trading, forex robot, currency trading, financial markets" />
+    <meta name="author" content="Forex Trading Bot" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Forex Trading Bot - Professional Automated Trading Platform" />
+    <meta property="og:description" content="Advanced forex trading bot with real-time market analysis, automated strategies, and comprehensive portfolio management." />
+    <meta property="og:image" content="%PUBLIC_URL%/trading-preview.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Forex Trading Bot - Professional Trading Platform" />
+    <meta property="twitter:description" content="Advanced forex trading bot with real-time market analysis and automated strategies." />
+    
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Additional CSS for better loading experience -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #0a0e1a;
+        color: #ffffff;
+      }
+      
+      code {
+        font-family: 'JetBrains Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+          monospace;
+      }
+      
+      #root {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #0a0e1a 0%, #1a1a2e 50%, #16213e 100%);
+      }
+      
+      /* Loading spinner */
+      .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #0a0e1a 0%, #1a1a2e 50%, #16213e 100%);
+      }
+      
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid #2a2a3e;
+        border-top: 3px solid #00d4ff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loading-text {
+        margin-left: 20px;
+        color: #00d4ff;
+        font-weight: 500;
+        font-size: 18px;
+      }
+    </style>
+    
+    <title>Forex Trading Bot - Professional Trading Platform</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this forex trading application.</noscript>
+    <div id="root">
+      <!-- Loading state while React loads -->
+      <div class="loading-container">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading Trading Platform...</div>
+      </div>
+    </div>
+    
+    <!-- Performance monitoring -->
+    <script>
+      // Basic performance monitoring
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const perfData = performance.getEntriesByType('navigation')[0];
+          if (perfData) {
+            console.log('Page Load Time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
+          }
+        }, 0);
+      });
+    </script>
+  </body>
+</html>

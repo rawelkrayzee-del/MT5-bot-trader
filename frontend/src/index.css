@@ -1,0 +1,357 @@
+/* Global styles for Forex Trading Bot */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0a0e1a;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0e1a 0%, #1a1a2e 50%, #16213e 100%);
+}
+
+code {
+  font-family: 'JetBrains Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6b6b6b;
+  border-radius: 4px;
+  border: 2px solid #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #959595;
+}
+
+::-webkit-scrollbar-corner {
+  background: #1a1a2e;
+}
+
+/* Scrollbar for Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #6b6b6b #1a1a2e;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Utility classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Trading specific styles */
+.price-up {
+  color: #00c853 !important;
+}
+
+.price-down {
+  color: #ff1744 !important;
+}
+
+.price-neutral {
+  color: #b0b7c3 !important;
+}
+
+/* Glassmorphism effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(45deg, #00d4ff, #0099cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+/* Hide focus outline for mouse users */
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    color: black !important;
+    background: white !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .mobile-hide {
+    display: none !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Loading states */
+.skeleton {
+  background: linear-gradient(90deg, #1a1a2e 25%, #2a2a3e 50%, #1a1a2e 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Trading chart container */
+.trading-chart-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: #16213e;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Status indicators */
+.status-online {
+  color: #00c853;
+}
+
+.status-offline {
+  color: #ff1744;
+}
+
+.status-warning {
+  color: #ff9800;
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Selection styles */
+::selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: white;
+}
+
+/* Error boundary styles */
+.error-boundary {
+  padding: 2rem;
+  text-align: center;
+  background: rgba(255, 23, 68, 0.1);
+  border: 1px solid rgba(255, 23, 68, 0.3);
+  border-radius: 12px;
+  margin: 1rem;
+}
+
+.error-boundary h2 {
+  color: #ff1744;
+  margin-bottom: 1rem;
+}
+
+.error-boundary details {
+  margin-top: 1rem;
+  text-align: left;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+}
+
+/* Responsive typography */
+@media (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Dark theme specific adjustments */
+.dark-theme {
+  color-scheme: dark;
+}
+
+/* Ensure proper contrast for form elements */
+input,
+textarea,
+select {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.23);
+  color: white;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Trading data table styles */
+.trading-table {
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+}
+
+.trading-table .price-cell {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+
+/* Real-time indicators */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+/* Chart tooltip styles */
+.chart-tooltip {
+  background: rgba(26, 26, 46, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
